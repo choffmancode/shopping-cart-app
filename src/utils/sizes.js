@@ -1,0 +1,1 @@
+export const sizes = {"Small": "S", "Medium": "M", "Large": "L", "Xtra-Large": "XL"};

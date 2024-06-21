@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // components
 import { ProductList } from './components/ProductList';
+import { Cart } from './components/Cart';
 
 // utils
 // import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
@@ -24,6 +25,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>Shopping Cart App!</h1>
+      <Cart />
       <ProductList products={products}/>
       <ul>
         {products.map(product => <li key={product.sku}>{product.title}</li>)}
