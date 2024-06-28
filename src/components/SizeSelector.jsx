@@ -3,21 +3,32 @@ import { SizeButton } from "./SizeButton"
 
 import { sizes } from "../utils/sizes"
 
+//styles
+import styled from "styled-components"
+
+
+const Container = styled.div`
+    background-color: white;
+    display: flex;
+    margin-bottom: 8px;
+
+`
+
 export const SizeSelector = () => {
     const [size, setSize] = useState("S")
     const [selected, setSelected] = useState([]);
 
     return (
         <>
-        <div className="btn-toolbar justify-content-between">
-                <div className="btn-group btn-group-sm">
+        <Container>
+                
                 { 
                 Object.values(sizes).map(
                     value => <SizeButton key={value} size={value} setSize={setSize} checked={value === size} />
                 )
                 }
-                </div>
-        </div>
+                
+        </Container>
         
         </>
     )
