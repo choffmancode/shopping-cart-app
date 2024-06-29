@@ -63,7 +63,6 @@ const ImgWrapper = styled.img`
 
 export const Product = (product) => {
 
-    console.log("p test", product)
     return (
         <Container>
  

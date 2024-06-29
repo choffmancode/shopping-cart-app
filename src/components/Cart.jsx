@@ -1,16 +1,23 @@
 import { useState } from "react";
 
+//styles
+import styled from "styled-components";
+
+const StyledCart = styled.div`
+    background-color: black;
+
+`
+
 export const Cart = () => {
-const [cartOpen, setCartOpen] = useState(false)
-//  {cartOpen ? <h1>Cart here</h1>: <h1>Nothing here!</h1>}
+
+
 return (
     <>
 
 
-        <div>
-            <button onClick={() => setCartOpen(!cartOpen)}>{cartOpen ? "Close" : "Open"}</button>
-            {cartOpen ? <h1>Cart here</h1>: <h1>Nothing here!</h1>}
-        </div>
+        <StyledCart>
+            <h1>time to custom</h1>
+        </StyledCart>
     </>
 )
 }

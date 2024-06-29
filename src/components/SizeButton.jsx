@@ -36,7 +36,7 @@ const Button = styled.button`
 
 export const SizeButton = (size, setSize, checked) => {
 
-        console.log("size", size)
+
     return (
         <>
         
