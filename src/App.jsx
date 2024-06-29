@@ -19,7 +19,7 @@ const ContentContainer = styled.div`
 `
 
 const CartContainer = styled.div`
-    background-color: black;
+   // background-color: black !important;
     position: fixed;
     float: right;
     transition: right 0.2s ease 0;
