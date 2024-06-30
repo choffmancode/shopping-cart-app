@@ -23,13 +23,17 @@ const StyledSidebar = styled(Sidebar)`
     z-index: 101
 `
 
+const CartIcon = styled.img`
+    background-color: black;
+`
+
 // look into making StyledCart that will spread each piece of cart content evenly
 
 const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick}) => {
 
     return(
             <>
-                <button onClick={handleCartClick}>{cartCollapsed ? "Open" : "Close"}</button>
+                <CartIcon onClick={handleCartClick} src="/data/static/cart-icon.png"></CartIcon>
                 
                     <StyledSidebar backgroundColor="rgb(0, 0, 0)" collapsed={cartCollapsed} collapsedWidth="0px">
                         <Cart />
@@ -39,4 +43,6 @@ const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick}) => {
         )
 }
 
+
+// public\data\static\cart-icon.png
 export default CartSidebar;
