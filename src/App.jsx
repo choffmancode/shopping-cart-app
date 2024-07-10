@@ -31,10 +31,17 @@ const CartContainer = styled.div`
 `
 
 const App = () => {
+
+  // fetch/set data
   const [data, setData] = useState({});
   const products = Object.values(data);
-  const isActive = true
+
+
+  // managing component states
   const [cartCollapsed, setCartCollapsed] = useState(true);
+  const [cartInventory, setCartInventory] = useState([['111111111', 'S']])
+
+  // event handlers
   function handleCartClick () {
     return setCartCollapsed(!cartCollapsed)
 }
@@ -51,20 +58,25 @@ const App = () => {
     fetchProducts();
   }, []);
 
-
+  console.log("prods1",products)
   // can use 'collapsed' prop for customizing sidebar open/close
   return (
     <>
       <CartContainer>
-        <CartSidebar cartCollapsed={cartCollapsed} setCartCollapsed={setCartCollapsed} handleCartClick={handleCartClick} /> 
+        <CartSidebar 
+          cartInventory={cartInventory} 
+          setCartInventory={setCartInventory} 
+          cartCollapsed={cartCollapsed} 
+          setCartCollapsed={setCartCollapsed} 
+          handleCartClick={handleCartClick} /> 
       </CartContainer>
     <ContentContainer>
       
       <h1>Shopping Cart App!</h1>
-      <ProductList products={products}/>
-      <ul>
-        {products.map(product => <li key={product.sku}>{product.title}</li>)}
-      </ul>
+      <ProductList 
+        cartInventory={cartInventory} 
+        setCartInventory={setCartInventory}  
+        products={products}/>
       </ContentContainer>
     </>
   );

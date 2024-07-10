@@ -25,21 +25,26 @@ const StyledSidebar = styled(Sidebar)`
 
 const CartIcon = styled.img`
     background-color: black;
+    padding: 4px;
 `
 
 // look into making StyledCart that will spread each piece of cart content evenly
 
-const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick}) => {
+const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick, cartInventory, setCartInventory}) => {
 
-    return(
-            <>
-                <CartIcon onClick={handleCartClick} src="/data/static/cart-icon.png"></CartIcon>
+    return (
+            
+            <Container >
+                <CartIcon onClick={handleCartClick} src="/data/static/cart-icon.png" />
                 
-                    <StyledSidebar backgroundColor="rgb(0, 0, 0)" collapsed={cartCollapsed} collapsedWidth="0px">
-                        <Cart />
-                    </StyledSidebar>
+                <StyledSidebar backgroundColor="rgb(0, 0, 0)" collapsed={cartCollapsed} collapsedWidth="0px">
+                        <Cart  
+                            cartInventory={cartInventory} 
+                            setCartInventory={setCartInventory} />
+                </StyledSidebar>
+            </Container>
                 
-            </>
+            
         )
 }
 

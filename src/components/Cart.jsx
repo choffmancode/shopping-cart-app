@@ -35,7 +35,8 @@ const CheckoutButton = styled.button`
 
 `
 
-export const Cart = () => {
+export const Cart = ({ cartInventory, setCartInventory }) => {
+
 
 
 return (
@@ -46,6 +47,7 @@ return (
                 Cart Icon
             </CartHeader>
 
+            {cartInventory && <h1>Here's the cart inventory</h1>}
             <CartContent>
                 <h1>Item 1</h1>
                 <h1>Item 1</h1>

@@ -1,5 +1,8 @@
 import { Product } from "./Product";
+import { useState } from "react";
 
+// utils
+import { addToCart } from "../utils/sizes";
 
 // styles
 import styled from "styled-components";
@@ -10,14 +13,18 @@ const Container = styled.div`
   
 `
 
-export const ProductList = ({products}) => {
+export const ProductList = ({products, cartInventory, setCartInventory}) => {
 
     return (
         <>
         <h2>{products.length} products</h2>
         <Container>
         
-            {products.map(product => <Product key ={product.sku} product={product}/>)}
+            {products.map(product => <Product 
+                                        cartInventory={cartInventory} 
+                                        setCartInventory={setCartInventory} 
+                                        key={product.sku} 
+                                        product={product}/>)}
         
         </Container>
         </>

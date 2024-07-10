@@ -14,7 +14,6 @@ const Button = styled.button`
   appearance: none;
   box-shadow: rgba(45, 35, 66, 0.4) 0 1px 2px,rgba(45, 35, 66, 0.3) 0 5px 13px -3px,#D6D6E7 0 -2px 0 inset;
   border-width: 0px;
-  
   color: #36395A;
   cursor: pointer;
   display: inline-flex;
@@ -34,14 +33,25 @@ const Button = styled.button`
 
 `
 
-export const SizeButton = (size, setSize, checked) => {
 
 
+export const SizeButton = ({product, selected, setSelected, child}) => {
+    
+
+    function handleSizeClick () {
+        setSelected([...selected, {
+            SKU: product.sku,
+            size: child
+        }])
+    }
+
+    console.log('producttest', product)
+    console.log("latest selection", selected)
     return (
         <>
         
-        <Button checked={checked} autoComplete="off" onClick={() => setSize(size.size)} id={size.size} >
-            {size.size}
+        <Button onClick={handleSizeClick} autoComplete="off" id={child} >
+            {child}
         </Button>
         
     </>

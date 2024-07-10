@@ -14,17 +14,23 @@ const Container = styled.div`
 
 `
 
-export const SizeSelector = () => {
-    const [size, setSize] = useState("S")
+// bring state into size buttons
+// only render size button if matching size exists in inventory
+// onClick => setCartInventory([...cartInventory, ['1111111111', 'S']])
+
+
+export const SizeSelector = ({product, matchingInventory, cartInventory, setCartInventory}) => {
+
     const [selected, setSelected] = useState([]);
 
+    
     return (
         <>
         <Container>
                 
                 { 
                 Object.values(sizes).map(
-                    value => <SizeButton key={value} size={value} setSize={setSize} checked={value === size} />
+                    value => <SizeButton product={product} selected={selected} setSelected={setSelected} key={value} child={value} />
                 )
                 }
                 

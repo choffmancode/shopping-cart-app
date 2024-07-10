@@ -1,5 +1,8 @@
+import React, { useEffect, useState } from 'react';
+
 import { SizeButton } from "./SizeButton";
 import { SizeSelector } from "./SizeSelector";
+import { useInventoryData } from "../utils/useInventoryData";
 
 // styles
 import styled from "styled-components";
@@ -61,23 +64,53 @@ const ImgWrapper = styled.img`
 `
 
 
-export const Product = (product) => {
+export const Product = ({product, cartInventory, setCartInventory}) => {
+
+const [invData, setInvData] = useState([]);
+const preInventory = Object.entries(invData);
+const productInventory = Object.fromEntries(preInventory);
+
+
+useEffect(() => {
+    const fetchInventory = async () => {
+        const response = await fetch('./data/static/json/inventory.json');
+        const json = await response.json();
+        setInvData(json);
+    };
+
+
+    fetchInventory();
+    }, []);
+    
+;
+
+const matchingInventory = productInventory => {
+    
+        return productInventory[product.sku]
+   
+}
+
+
 
     return (
         <Container>
  
                 <CardContent>
                     <ImgWrapper 
-                        src={`./data/static/products/${product.product.sku}-1-product.webp`} 
+                        src={`./data/static/products/${product.sku}-1-product.webp`} 
                         alt="card image">
                     </ImgWrapper>
 
                     <ButtonRow>
-                        <SizeSelector />
+                        <SizeSelector 
+                            matchingInventory={matchingInventory(productInventory)}
+                            cartInventory={cartInventory} 
+                            setCartInventory={setCartInventory}
+                            product={product}/>
                     </ButtonRow>
                     
-                    <CardTitle>{product.product.title}</CardTitle>
-                    <CardText>${product.product.price}</CardText>
+                    <CardTitle>{product.title}</CardTitle>
+                    <CardText>${product.price}</CardText>
                     
                 </CardContent>
         
