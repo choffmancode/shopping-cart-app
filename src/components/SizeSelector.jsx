@@ -19,11 +19,9 @@ const Container = styled.div`
 // onClick => setCartInventory([...cartInventory, ['1111111111', 'S']])
 
 
-export const SizeSelector = ({product, matchingInventory, cartInventory, setCartInventory}) => {
+export const SizeSelector = ({product, matchingInventory, cartInventory, setCartInventory, selected, setSelected}) => {
 
-    const [selected, setSelected] = useState([]);
 
-    
     return (
         <>
         <Container>

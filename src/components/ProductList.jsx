@@ -13,7 +13,9 @@ const Container = styled.div`
   
 `
 
-export const ProductList = ({products, cartInventory, setCartInventory}) => {
+export const ProductList = ({products, cartInventory, setCartInventory, selected, setSelected}) => {
+
+    
 
     return (
         <>
@@ -21,6 +23,8 @@ export const ProductList = ({products, cartInventory, setCartInventory}) => {
         <Container>
         
             {products.map(product => <Product 
+                                        selected={selected}
+                                        setSelected={setSelected}
                                         cartInventory={cartInventory} 
                                         setCartInventory={setCartInventory} 
                                         key={product.sku} 

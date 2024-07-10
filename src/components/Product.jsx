@@ -64,7 +64,7 @@ const ImgWrapper = styled.img`
 `
 
 
-export const Product = ({product, cartInventory, setCartInventory}) => {
+export const Product = ({product, cartInventory, setCartInventory, selected, setSelected}) => {
 
 const [invData, setInvData] = useState([]);
 const preInventory = Object.entries(invData);
@@ -103,6 +103,8 @@ const matchingInventory = productInventory => {
 
                     <ButtonRow>
                         <SizeSelector 
+                            selected={selected}
+                            setSelected={setSelected}
                             matchingInventory={matchingInventory(productInventory)}
                             cartInventory={cartInventory} 
                             setCartInventory={setCartInventory}

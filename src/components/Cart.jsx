@@ -24,18 +24,30 @@ const CartContent = styled.div`
     flex-direction: column;
     //justify-content: space-between;
     margin-top: 32px;
+    
 `
 
 const CheckoutContent = styled.div`
+    background-color: #F0EAD6;
     bottom: 8px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+
 `
 
 const CheckoutButton = styled.button`
-    
+    background-color: orange;
+    color: white;
 
 `
 
-export const Cart = ({ cartInventory, setCartInventory }) => {
+const getItemTitle = (item) => {
+
+}
+
+export const Cart = ({ selected, setSelected }) => {
 
 
 
@@ -47,15 +59,12 @@ return (
                 Cart Icon
             </CartHeader>
 
-            {cartInventory && <h1>Here's the cart inventory</h1>}
             <CartContent>
-                <h1>Item 1</h1>
-                <h1>Item 1</h1>
-                <h1>Item 1</h1>
-                <h1>Item 1</h1>
+                {selected?.map((item) => <p>{item.SKU}</p>)}
             </CartContent>
 
             <CheckoutContent>
+                <h1>Total: Price</h1>
                 <CheckoutButton>Checkout</CheckoutButton>
             </CheckoutContent>
 

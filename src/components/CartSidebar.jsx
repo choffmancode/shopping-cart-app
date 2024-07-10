@@ -30,17 +30,18 @@ const CartIcon = styled.img`
 
 // look into making StyledCart that will spread each piece of cart content evenly
 
-const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick, cartInventory, setCartInventory}) => {
+const CartSidebar = ({cartCollapsed, setCartCollapsed, handleCartClick, cartInventory, setCartInventory, selected, setSelected}) => {
 
     return (
             
             <Container >
-                <CartIcon onClick={handleCartClick} src="/data/static/cart-icon.png" />
+                <CartIcon onClick={handleCartClick} src="/data/static/cart-icon.png"></CartIcon>
                 
                 <StyledSidebar backgroundColor="rgb(0, 0, 0)" collapsed={cartCollapsed} collapsedWidth="0px">
                         <Cart  
-                            cartInventory={cartInventory} 
-                            setCartInventory={setCartInventory} />
+                            selected={selected} 
+                            setSelected={setSelected} 
+                        />
                 </StyledSidebar>
             </Container>
                 

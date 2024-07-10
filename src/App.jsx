@@ -40,8 +40,9 @@ const App = () => {
   // managing component states
   const [cartCollapsed, setCartCollapsed] = useState(true);
   const [cartInventory, setCartInventory] = useState([['111111111', 'S']])
+  const [selected, setSelected] = useState([]);
 
-  // event handlers
+  // event handlers - this particular one should go down in CartSidebar
   function handleCartClick () {
     return setCartCollapsed(!cartCollapsed)
 }
@@ -58,12 +59,13 @@ const App = () => {
     fetchProducts();
   }, []);
 
-  console.log("prods1",products)
   // can use 'collapsed' prop for customizing sidebar open/close
   return (
     <>
       <CartContainer>
         <CartSidebar 
+          selected={selected}
+          setSelected={setSelected}
           cartInventory={cartInventory} 
           setCartInventory={setCartInventory} 
           cartCollapsed={cartCollapsed} 
@@ -74,6 +76,8 @@ const App = () => {
       
       <h1>Shopping Cart App!</h1>
       <ProductList 
+        selected={selected}
+        setSelected={setSelected}
         cartInventory={cartInventory} 
         setCartInventory={setCartInventory}  
         products={products}/>
