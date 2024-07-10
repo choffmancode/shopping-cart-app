@@ -41,11 +41,12 @@ export const SizeButton = ({product, selected, setSelected, child}) => {
     function handleSizeClick () {
         setSelected([...selected, {
             SKU: product.sku,
-            size: child
+            size: child,
+            price: product.price,
+            title: product.title
         }])
     }
 
-    console.log('producttest', product)
     console.log("latest selection", selected)
     return (
         <>

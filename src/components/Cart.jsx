@@ -43,12 +43,11 @@ const CheckoutButton = styled.button`
 
 `
 
-const getItemTitle = (item) => {
-
-}
-
 export const Cart = ({ selected, setSelected }) => {
 
+const totalPrice = selected.reduce((total, curVal) => {
+    return total + curVal.price;
+}, 0);
 
 
 return (
@@ -60,11 +59,11 @@ return (
             </CartHeader>
 
             <CartContent>
-                {selected?.map((item) => <p>{item.SKU}</p>)}
+                {selected?.map((item) => <p>{item.title}</p>)}
             </CartContent>
 
             <CheckoutContent>
-                <h1>Total: Price</h1>
+                <h1>Total: {totalPrice}</h1>
                 <CheckoutButton>Checkout</CheckoutButton>
             </CheckoutContent>
 
