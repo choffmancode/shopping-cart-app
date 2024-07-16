@@ -20,15 +20,17 @@ const ContentContainer = styled.div`
 `
 
 const CartContainer = styled.div`
-   // background-color: black !important;
+    background-color: black !important;
     position: fixed;
     float: right;
     transition: right 0.2s ease 0;
-    top: 8px;
+    top: 0px;
     right: 0px;
     height: 100%;
     z-index: 99;
 `
+
+
 
 const App = () => {
 
@@ -66,10 +68,7 @@ const App = () => {
         <CartSidebar 
           selected={selected}
           setSelected={setSelected}
-          cartInventory={cartInventory} 
-          setCartInventory={setCartInventory} 
-          cartCollapsed={cartCollapsed} 
-          setCartCollapsed={setCartCollapsed} 
+          cartCollapsed={cartCollapsed}
           handleCartClick={handleCartClick} /> 
       </CartContainer>
     <ContentContainer>
