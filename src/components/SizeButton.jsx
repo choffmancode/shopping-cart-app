@@ -47,7 +47,6 @@ export const SizeButton = ({product, selected, setSelected, child}) => {
         }])
     }
 
-    console.log("latest selection", selected)
     return (
         <>
         

@@ -14,7 +14,9 @@ import './App.css';
 import styled from 'styled-components';
 
 const ContentContainer = styled.div`
+    //padding: 0px, 50px;
     position: absolute;
+    overflow-x: hidden;
     width: 100%;
     z-index: -1;
 `
@@ -29,8 +31,6 @@ const CartContainer = styled.div`
     height: 100%;
     z-index: 99;
 `
-
-
 
 const App = () => {
 
@@ -61,7 +61,6 @@ const App = () => {
     fetchProducts();
   }, []);
 
-  // can use 'collapsed' prop for customizing sidebar open/close
   return (
     <>
       <CartContainer>

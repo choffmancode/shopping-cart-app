@@ -4,23 +4,11 @@ import { useState } from "react";
 import styled from "styled-components";
 
 //components
-import { CartFooter } from "./CartFooter";
+
 
 const StyledCart = styled.div`
-    background-color: black;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
 `
-
-const CartHeader = styled.div`
-    margin-top: 16px;
-    text-align: center;
-
-`
-
 const CartContent = styled.div`
     text-align: center;
     display: flex;
@@ -30,23 +18,37 @@ const CartContent = styled.div`
     
 `
 
+const deleteIcon = styled.span`
+
+`
 
 export const Cart = ({ selected, setSelected }) => {
 
+    function handleCartXClick () {
+        // const itemIndex = selected.find((selectedItem) => selectedItem.SKU === item.SKU)
+        // console.log('test-index', itemIndex)
+        console.log("testitem", this.item)
+        // const newSelected = selected.filter((val) => val.SKU !== item.SKU);
+        // console.log("testsel", newSelected)
+        //setSelected(newSelected)
+    }
 
-
+    // it needs to remove item from the selected list inside of setSelected. use .filter() where selecteditem = item
 return (
     <>
         <StyledCart>
 
             <CartContent>
-                {selected?.map((item) => <p key={item.sku} >{item.title}</p>)}
+                {selected?.map((item) => 
+                    <>
+                        <p key={item.sku} >{item.title}</p>
+                        <button id={item.sku} onClick={handleCartXClick} >X</button>
+                    </>
+                        )}
             </CartContent>
 
-
-            
 
         </StyledCart>
     </>
 )
-}
+};

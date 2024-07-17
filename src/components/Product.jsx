@@ -105,9 +105,6 @@ const matchingInventory = productInventory => {
                         <SizeSelector 
                             selected={selected}
                             setSelected={setSelected}
-                            matchingInventory={matchingInventory(productInventory)}
-                            cartInventory={cartInventory} 
-                            setCartInventory={setCartInventory}
                             product={product}/>
                     </ButtonRow>
                     

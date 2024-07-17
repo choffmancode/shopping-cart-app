@@ -12,7 +12,6 @@ const CheckoutContent = styled.div`
     justify-content: space-between;
     padding: 8px 16px;
     width: 100%;
-
 `
 
 const CheckoutButton = styled.button`
@@ -21,10 +20,8 @@ const CheckoutButton = styled.button`
 
 `
 
-
-
-
 export const CartFooter = ({selected}) => {
+    
     const totalPrice = selected?.reduce((total, curVal) => {
         return total + curVal.price;
     }, 0);

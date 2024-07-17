@@ -10,7 +10,7 @@ import styled from "styled-components";
 const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 17rem));
-  
+    scrollbar-width: none;
 `
 
 export const ProductList = ({products, cartInventory, setCartInventory, selected, setSelected}) => {
