@@ -6,49 +6,56 @@ import styled from "styled-components";
 //components
 
 
-const StyledCart = styled.div`
-    color: white;
-`
 const CartContent = styled.div`
+    color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
     //justify-content: space-between;
     margin-top: 32px;
-    
+    padding: 16px; 
 `
 
-const deleteIcon = styled.span`
+const CartItem = styled.div`
+    
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    justify-content: space-between;
+    padding: 8px;
+    margin-top: 8px;
+`
+
+const DeleteButton= styled.button`
+    height: 32px;
+    padding: 8px;
+    vertical-align: text-top;
 
 `
 
 export const Cart = ({ selected, setSelected }) => {
 
-    function handleCartXClick () {
-        // const itemIndex = selected.find((selectedItem) => selectedItem.SKU === item.SKU)
-        // console.log('test-index', itemIndex)
-        console.log("testitem", this.item)
-        // const newSelected = selected.filter((val) => val.SKU !== item.SKU);
-        // console.log("testsel", newSelected)
-        //setSelected(newSelected)
+    console.log("test",selected)
+    function handleCartXClick (item) { 
+        
+        const newSelected = selected.filter(
+            (val) => val.SKU !== item.SKU || val.size !== item.size
+        );
+        setSelected(newSelected);
+    
     }
 
-    // it needs to remove item from the selected list inside of setSelected. use .filter() where selecteditem = item
+    // best to put keys in a parent html tag so that we don't have children with the same keys. Even differnt tag types with same key will be considered duplicates
 return (
     <>
-        <StyledCart>
-
             <CartContent>
-                {selected?.map((item) => 
-                    <>
-                        <p key={item.sku} >{item.title}</p>
-                        <button id={item.sku} onClick={handleCartXClick} >X</button>
-                    </>
+                {selected.map((item) => 
+                    <CartItem key={`${item.SKU}_${item.size}`}>
+                        <p >{`${item.title}-${item.size}`}</p>
+                        <DeleteButton onClick={() => {handleCartXClick(item)}} >X</DeleteButton>
+                    </CartItem>
                         )}
             </CartContent>
-
-
-        </StyledCart>
     </>
 )
 };
