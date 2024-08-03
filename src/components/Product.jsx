@@ -64,26 +64,9 @@ const ImgWrapper = styled.img`
 `
 
 
-export const Product = ({product, cartInventory, setCartInventory, selected, setSelected}) => {
+export const Product = ({product, productInventory, setProductInventory , selected, setSelected}) => {
 
-const [invData, setInvData] = useState([]);
-const preInventory = Object.entries(invData);
-const productInventory = Object.fromEntries(preInventory);
-
-
-useEffect(() => {
-    const fetchInventory = async () => {
-        const response = await fetch('./data/static/json/inventory.json');
-        const json = await response.json();
-        setInvData(json);
-    };
-
-
-    fetchInventory();
-    }, []);
-    
-;
-
+    console.log("testerino", productInventory)
 const matchingInventory = productInventory => {
     
         return productInventory[product.sku]

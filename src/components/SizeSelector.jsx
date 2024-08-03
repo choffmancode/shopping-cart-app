@@ -19,7 +19,7 @@ const Container = styled.div`
 // onClick => setCartInventory([...cartInventory, ['1111111111', 'S']])
 
 
-export const SizeSelector = ({product, selected, setSelected}) => {
+export const SizeSelector = ({product, productInventory, setProductInventory ,  selected, setSelected}) => {
 
 
     return (

@@ -13,7 +13,7 @@ const Container = styled.div`
     scrollbar-width: none;
 `
 
-export const ProductList = ({products, cartInventory, setCartInventory, selected, setSelected}) => {
+export const ProductList = ({products, selected, setSelected}) => {
 
     
 
@@ -25,8 +25,6 @@ export const ProductList = ({products, cartInventory, setCartInventory, selected
             {products.map(product => <Product 
                                         selected={selected}
                                         setSelected={setSelected}
-                                        cartInventory={cartInventory} 
-                                        setCartInventory={setCartInventory} 
                                         key={product.sku} 
                                         product={product}/>)}
         
