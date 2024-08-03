@@ -8,6 +8,8 @@ import CartSidebar from './components/CartSidebar';
 
 // utils
 // import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { useData } from './utils/firebase';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 
 // styles
 import './App.css';
@@ -32,16 +34,12 @@ const CartContainer = styled.div`
     z-index: 99;
 `
 
-const App = () => {
-
-  // fetch/set data
-  const [data, setData] = useState({});
-  const products = Object.values(data);
+const Main = () => {
 
 
   // managing component states
   const [cartCollapsed, setCartCollapsed] = useState(true);
-  const [cartInventory, setCartInventory] = useState([['111111111', 'S']])
+  const [cartInventory, setCartInventory] = useState([])
   const [selected, setSelected] = useState([]);
 
   // event handlers - this particular one should go down in CartSidebar
@@ -50,16 +48,31 @@ const App = () => {
 }
 
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch('./data/static/json/products.json');
-      const json = await response.json();
-      setData(json);
-    };
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const response = await fetch('./data/static/json/products.json');
+  //     const json = await response.json();
+  //     setData(json);
+  //   };
 
 
-    fetchProducts();
-  }, []);
+  //   fetchProducts();
+
+   
+
+  // }, []);
+
+  // implement useData hook and set inventory data
+    const [products, inventory, isLoading, error] = useData();
+
+    // const products = Object.values(dbData)
+    // console.log("Datalog", dbData["products"])
+
+    
+    // const inventory = dbData?.inventory
+  
+    if (error) return <h1>{error}</h1>;
+    if (isLoading) return <h1>Loading the store...</h1>
 
   return (
     <>
@@ -83,6 +96,14 @@ const App = () => {
     </>
   );
 };
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <Main />
+  </QueryClientProvider>
+);
 
 
 
