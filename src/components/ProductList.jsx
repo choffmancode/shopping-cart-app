@@ -13,7 +13,7 @@ const Container = styled.div`
     scrollbar-width: none;
 `
 
-export const ProductList = ({products, selected, setSelected}) => {
+export const ProductList = ({products, productInventory, setProductInventory, selected, setSelected}) => {
 
     
 
@@ -26,7 +26,10 @@ export const ProductList = ({products, selected, setSelected}) => {
                                         selected={selected}
                                         setSelected={setSelected}
                                         key={product.sku} 
-                                        product={product}/>)}
+                                        product={product}
+                                        productInventory = {productInventory}
+                                        setProductInventory = {setProductInventory}
+                                        />)}
         
         </Container>
         </>

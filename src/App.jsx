@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { isEqual } from 'lodash';
 
 // components
 import { ProductList } from './components/ProductList';
@@ -39,9 +40,15 @@ const Main = () => {
 
   // managing states
   const [cartCollapsed, setCartCollapsed] = useState(true);
-  const [productInventory, setProductInventory] = useState(inventory)
+  const [productInventory, setProductInventory] = useState([])
   const [selected, setSelected] = useState([]);
 
+  useEffect(() => {
+    if (!isEqual(inventory, productInventory)) {
+      setProductInventory(inventory);
+    }
+  }, [inventory, productInventory]);
+  console.log("3^ testerino", inventory)
 
   // event handlers - this particular one should go down in CartSidebar
   function handleCartClick () {

@@ -28,7 +28,15 @@ export const SizeSelector = ({product, productInventory, setProductInventory ,  
                 
                 { 
                 Object.values(sizes).map(
-                    value => <SizeButton product={product} selected={selected} setSelected={setSelected} key={value} child={value} />
+                    value => <SizeButton 
+                                product={product} 
+                                selected={selected} 
+                                setSelected={setSelected}
+                                key={value}
+                                child={value} 
+                                productInventory={productInventory}
+                                setProductInventory={setProductInventory}
+                                />
                 )
                 }
                 

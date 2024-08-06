@@ -66,13 +66,8 @@ const ImgWrapper = styled.img`
 
 export const Product = ({product, productInventory, setProductInventory , selected, setSelected}) => {
 
-    console.log("testerino", productInventory)
-const matchingInventory = productInventory => {
-    
-        return productInventory[product.sku]
    
-}
-
+    console.log("1^ testerino", productInventory)
 
 
     return (
@@ -88,7 +83,10 @@ const matchingInventory = productInventory => {
                         <SizeSelector 
                             selected={selected}
                             setSelected={setSelected}
-                            product={product}/>
+                            product={product}
+                            productInventory={productInventory}
+                            setProductInventory={setProductInventory}
+                            />
                     </ButtonRow>
                     
                     <CardTitle>{product.title}</CardTitle>

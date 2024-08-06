@@ -35,30 +35,43 @@ const Button = styled.button`
 
 
 
-export const SizeButton = ({product, selected, setSelected, child}) => {
+export const SizeButton = ({product, productInventory, setProductInventory ,selected, setSelected, child}) => {
     
+    const [counter, setCounter]= useState([])
 
-    function handleSizeClick () {
+    function handleSizeClick() {
+        // Find the product in the inventory
+        const updatedInventory = productInventory.map(item => {
+            if (item.sku === product.sku) {
+                // Reduce the size count by 1
+                return {
+                    ...item,
+                    child: item[child] > 0 ? item[child] - 1 : 0 // Ensure the count doesn't go below 0
+                };
+            }
+            return item;
+        });
+    
+        // Update the selected state
         setSelected([...selected, {
             SKU: product.sku,
             size: child,
             price: product.price,
             title: product.title
-        }])
-    }
+        }]);
+    
+        // Update the product inventory state
+        setProductInventory(updatedInventory);
 
+        setCounter(counter + 1)
+    }
     return (
         <>
         
-        <Button onClick={handleSizeClick} autoComplete="off" id={child} >
+        <Button onClick={handleSizeClick} autoComplete="off" id={`${product.sku}-${child}-${counter}`} >
             {child}
         </Button>
         
     </>
     )
 }
-
-//<input type="radio" id={size.size} className="btn-check" checked={checked} autoComplete="off" onChange={() => setSize(size.size)} />
-// <label className="btn btn-info m-1 p-2" htmlFor={size.size}>
-// { size.size }
-// </label>
